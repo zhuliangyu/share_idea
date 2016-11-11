@@ -136,6 +136,14 @@ rails g migration add_column_flag_messages flag:boolean
 
 Message.create(body:"qqqq",user:"zhu",flag:true)
 
+****************
+work on comment
 
+Idea.first.comments
 
+Comment.first.idea
  
+params[:idea_id]
+
+*********************
+

@@ -50,6 +50,11 @@ class IdeasController < ApplicationController
 
   def show
     @idea=find_idea_by_id
+    @comment=Comment.new
+    @comments=find_comments_by_idea(@idea)
+
+
+
 
   end
 
@@ -66,6 +71,11 @@ class IdeasController < ApplicationController
 
   def find_idea_by_id
     Idea.find(params[:id])
+
+  end
+
+  def find_comments_by_idea(idea)
+    idea.comments
 
   end
 
