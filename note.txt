@@ -147,3 +147,13 @@ params[:idea_id]
 
 *********************
 
+if user doesn't sign in, he/she could not create comments
+
+Users must be logged in to create or delete comments
+
+Users can only delete their own comments
+
+idea owners can delete any comments on their ideas 
+
+
+

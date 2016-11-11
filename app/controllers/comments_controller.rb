@@ -13,6 +13,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to idea_path(idea_id)
     else
+      redirect_to idea_path(idea_id),notice: error_message(@comment)
 
     end
 
@@ -28,8 +29,6 @@ class CommentsController < ApplicationController
     @idea=@comment.idea
     @comment.destroy
     redirect_to idea_path(@idea)
-
-
 
   end
 
