@@ -1,0 +1,141 @@
+user
+rails g model user first_name last_name email password_digest
+rails g controller users
+
+idea
+rails g model idea title body user:references
+rails g controller ideas new create edit update destroy show index
+
+
+comment
+rails g model comment body user:references idea:references
+rails g controller comments
+
+session
+rails g controller sessions
+
+
+like
+rails g model like user:references idea:references
+rails g controller likes
+
+
+join
+rails g model join user:references idea:references
+rails g controller joins
+
+home#index
+rails g controller homes index
+
+*******************************
+set up the has_many,belong to etc.. relation of model
+
+rails db:migrate
+
+
+******************************
+setup the validation
+
+ u.errors.full_messages
+ c.errors.full_messages
+ i.errors.full_messages
+ l.errors.full_messages
+ j.errors.full_messages
+
+
+
+
+
+
+*****************************
+create models
+
+u=User.create(first_name:'zhu',last_name:'liang', email:'zhu@126.com',password:'123456')
+
+i=Idea.create(user:u,title:'title112',body:'body-idea-112')
+
+c=Comment.create(user:u,idea:i,body:'body-comment-112')
+
+l=Like.create(user:u,idea:i)
+
+j=Join.create(user:u,idea:i)
+
+
+******************************
+has a test for the model
+
+one idea -- many comments
+i.comments
+c.idea
+
+one user -- many ideas
+u.ideas
+i.user
+
+one user -- many comments
+u.comments
+c.user
+
+
+users --like-- ideas
+u.ideas
+i.users
+u.likes
+i.likes
+
+l=Like.first
+l.user
+l.idea
+
+
+users --join-- ideas
+u.ideas
+i.users
+u.joins
+i.joins
+
+j=Join.first
+j.user
+j.idea
+
+
+******************************
+routes
+
+create a new user
+http://localhost:3000/users/new
+
+
+**********************
+indexpage
+ideas_path
+
+create idea_likes_path	idea_id
+
+delete like_path id
+
+
+done:Implement the ability to Like an idea as shown below. 
+
+Users can't like their own ideas. 
+
+Show the number of likes on the idea show page and the listing page. 
+
+user can only like one time
+
+
+
+****************
+
+rails g migration addColumnMessages user
+
+rails g migration add_column_flag_messages flag:boolean
+
+
+
+
+Message.create(body:"qqqq",user:"zhu",flag:true)
+
+
+
+ 

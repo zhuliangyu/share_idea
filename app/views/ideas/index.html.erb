@@ -1,0 +1,42 @@
+<h1>Ideas#index</h1>
+<% @ideas.each do |idea| %>
+    <div>
+      <h1>Title:<%= idea.title %></h1>
+      <h2>Body:<%= idea.body %></h2>
+      <h3>User:<%= idea.user.first_name %></h3>
+      <%= link_to "show", idea_path(idea) %>
+
+      <div class="like">
+        <% like=idea.likes.find_by(user: current_user) %>
+
+        <% if like %>
+            <%= link_to "liked", like_path(like), method: :delete %>
+
+        <% else %>
+
+            <% if can? :like, idea %>
+                <%= link_to "like", idea_likes_path(idea), method: :post %>
+            <% end %>
+        <% end %>
+
+        <h3>Likes:<%= idea.likes.count %></h3>
+      </div>
+
+      <div class="join">
+        <% join=idea.joins.find_by(user: current_user) %>
+
+        <% if join %>
+            <%= link_to "Joined", join_path(join), method: :delete %>
+
+        <% else %>
+            <%= link_to "Join", idea_joins_path(idea), method: :post %>
+
+        <% end %>
+
+        <h3>Joins:<%= idea.joins.count %></h3>
+      </div>
+
+
+    </div>
+    <hr>
+<% end %>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ShareIdeas</title>
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+<!--notice-->
+<div class="notice">
+  <%= flash[:notice] %>
+
+</div>
+<!--notice-->
+
+<!--alert-->
+<div class="alert">
+  <%= flash[:alert] %>
+</div>
+<!--alert-->
+
+
+<div class="nav">
+  <ul>
+    <% if user_sign_in? %>
+        <li><h3>Welcome,<%= current_user.first_name %> </h3></li>
+    <% end %>
+    <li>
+      <%= link_to "create a new user", new_user_path %>
+    </li>
+    <li>
+      <%= link_to "login", new_session_path %>
+    </li>
+    <li>
+      <%= link_to "logout", sessions_path, method: :delete %>
+    </li>
+    <li>
+      <%= link_to "New idea",new_idea_path %>
+    </li>
+    <li>
+      <%= link_to "All ideas", ideas_path %>
+    </li>
+
+  </ul>
+
+</div>
+
+
+<%= yield %>
+</body>
+</html>
