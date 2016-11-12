@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to idea_path(idea_id)
     else
-      redirect_to idea_path(idea_id),notice: error_message(@comment)
+      redirect_to idea_path(idea_id), notice: error_message(@comment)
 
     end
 
@@ -27,8 +27,14 @@ class CommentsController < ApplicationController
 
     @comment=Comment.find(comment_id)
     @idea=@comment.idea
-    @comment.destroy
-    redirect_to idea_path(@idea)
+
+
+    if can? :delete, @comment
+      @comment.destroy
+      redirect_to idea_path(@idea),notice: "You successfuly delete one comments."
+    else
+      redirect_to idea_path(@idea), notice: "You can't delete this comment."
+    end
 
   end
 
@@ -36,4 +42,7 @@ class CommentsController < ApplicationController
   def get_comment_params
     params.require(:comment).permit(:body)
   end
+
+
+
 end

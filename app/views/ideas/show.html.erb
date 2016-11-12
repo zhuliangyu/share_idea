@@ -4,8 +4,8 @@
   <h1>Title:<%= @idea.title %></h1>
   <h1>Body:<%= @idea.body %></h1>
   <h1>User:<%= @idea.user.first_name %></h1>
-  <%= link_to "Edit",edit_idea_path(@idea) %>
-  <%= link_to "Delete",idea_path(@idea),method: :delete,data: {confirm: "are you sure?"} %>
+  <%= link_to "Edit", edit_idea_path(@idea) %>
+  <%= link_to "Delete", idea_path(@idea), method: :delete, data: {confirm: "are you sure?"} %>
 
 </div>
 
@@ -13,9 +13,11 @@
 
 <div class="comments">
   <% @comments.each do |comment| %>
-  <h2>Comments: <%= comment.body %></h2>
-  <h2>Comments by: <%= comment.user.first_name %></h2>
-      <%= link_to "delete",comment_path(comment),method: :delete %>
+      <h2>Comments: <%= comment.body %></h2>
+      <h2>Comments by: <%= comment.user.first_name %></h2>
+      <% if can? :delete, comment %>
+          <%= link_to "delete", comment_path(comment), method: :delete %>
+      <% end %>
   <% end %>
 
 </div>

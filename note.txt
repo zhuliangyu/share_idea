@@ -156,4 +156,8 @@ Users can only delete their own comments
 idea owners can delete any comments on their ideas 
 
 
+diff -rq /Users/macbook/codecore /Volumes/Mac_SSD/Users/macbook/codecore >> differences.txt
+
+/Users/macbook/codecore /Volumes/Mac_SSD/Users/macbook/codecore
+
 
