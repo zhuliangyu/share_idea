@@ -5,6 +5,7 @@
       <h2>Body:<%= idea.body %></h2>
       <h3>User:<%= idea.user.first_name %></h3>
       <%= link_to "show", idea_path(idea) %>
+      <br>
 
       <div class="like">
         <% like=idea.likes.find_by(user: current_user) %>

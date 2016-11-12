@@ -160,4 +160,10 @@ diff -rq /Users/macbook/codecore /Volumes/Mac_SSD/Users/macbook/codecore >> diff
 
 /Users/macbook/codecore /Volumes/Mac_SSD/Users/macbook/codecore
 
+ can :delete,Comment do |comment|
+      comment.user==user || comment.idea.user==user
+    end
+
+
+ add a picture to your front page
 

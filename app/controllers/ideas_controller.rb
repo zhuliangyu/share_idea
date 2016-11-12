@@ -24,14 +24,16 @@ class IdeasController < ApplicationController
 
   def edit
     @idea=find_idea_by_id
+    redirect_to idea_path(@idea), notice: 'You can not modify a idea if you are not a author' unless can? :edit_idea, @idea
+
   end
 
   def update
     # @user=current_user
     @idea=find_idea_by_id
 
-    if @idea.update(get_idea_params)
-      redirect_to idea_path(@idea),notice: "You have updated"
+    if can? :edit_idea, @idea || @idea.update(get_idea_params)
+      redirect_to idea_path(@idea), notice: "You have updated"
     else
       redirect_to :back
 
@@ -42,8 +44,14 @@ class IdeasController < ApplicationController
 
   def destroy
     @idea=find_idea_by_id
-    @idea.destroy
-    redirect_to ideas_path,notice: "You have deleted a post!"
+
+    if can? :delete_idea, @idea
+      @idea.destroy
+      redirect_to ideas_path, notice: "You have deleted a post!"
+
+    else
+      redirect_to idea_path(@idea), notice: "You can't deleted a post if you are not an author!"
+    end
 
 
   end
@@ -52,8 +60,6 @@ class IdeasController < ApplicationController
     @idea=find_idea_by_id
     @comment=Comment.new
     @comments=find_comments_by_idea(@idea)
-
-
 
 
   end

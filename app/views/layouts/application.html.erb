@@ -31,17 +31,27 @@
     <li>
       <%= link_to "create a new user", new_user_path %>
     </li>
-    <li>
-      <%= link_to "login", new_session_path %>
-    </li>
-    <li>
-      <%= link_to "logout", sessions_path, method: :delete %>
-    </li>
-    <li>
-      <%= link_to "New idea",new_idea_path %>
-    </li>
+    <% unless user_sign_in? %>
+        <li>
+          <%= link_to "login", new_session_path %>
+        </li>
+
+    <% end %>
+
+    <% if user_sign_in? %>
+        <li>
+          <%= link_to "logout", sessions_path, method: :delete %>
+        </li>
+        <li>
+          <%= link_to "New idea", new_idea_path %>
+        </li>
+    <% end %>
+
     <li>
       <%= link_to "All ideas", ideas_path %>
+    </li>
+    <li>
+      <%= link_to "Go Home", root_path %>
     </li>
 
   </ul>
