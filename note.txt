@@ -167,3 +167,6 @@ diff -rq /Users/macbook/codecore /Volumes/Mac_SSD/Users/macbook/codecore >> diff
 
  add a picture to your front page
 
+********************************
+
+

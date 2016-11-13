@@ -37,3 +37,35 @@ Bonus (to be added to the Rails application):
 Add ability to attach images to ideas (use the Paperclip or CarrierWave gems) - 10%
 
 Add a mailer to send an email to the idea creator when someone likes their ideas and make it happen in the background with DelayedJob - 15%
+
+*****************
+
+factory girl
+
+rails g rspec:controller comments
+
+rails g factory_girl:model Comment body
+rails g factory_girl:model Idea name speed:integer
+rails g factory_girl:model User name speed:integer
+
+FactoryGirl.create(:user)
+FactoryGirl.create(:idea)
+FactoryGirl.create(:comment,user:FactoryGirl.create(:user))
+FactoryGirl.create(:comment)
+FactoryGirl.build(:user)
+
+
+********************
+Users must be logged in to create or delete comments
+
+Creating or deleting comments redirects back to the idea show page
+
+Comments get associated with the logged in user
+
+Users can only delete their own comments
+
+
+**********
+481
+
+

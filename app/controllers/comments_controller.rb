@@ -5,10 +5,13 @@ class CommentsController < ApplicationController
     # render plain:"asd"
 
     @comment=Comment.new(get_comment_params)
+
     @comment.user=current_user
 
     idea_id=params[:idea_id]
     @comment.idea_id=idea_id
+
+
 
     if @comment.save
       redirect_to idea_path(idea_id)
@@ -27,6 +30,7 @@ class CommentsController < ApplicationController
 
     @comment=Comment.find(comment_id)
     @idea=@comment.idea
+
 
 
     if can? :delete, @comment
