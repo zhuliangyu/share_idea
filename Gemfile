@@ -38,6 +38,9 @@ group :development, :test do
   gem 'awesome_print'
   gem 'hirb'
   gem 'faker', '~> 1.6', '>= 1.6.6'
+  gem "paperclip", "~> 5.0.0"
+
+
 
 
 

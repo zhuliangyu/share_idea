@@ -32,7 +32,8 @@ class IdeasController < ApplicationController
     # @user=current_user
     @idea=find_idea_by_id
 
-    if can? :edit_idea, @idea || @idea.update(get_idea_params)
+    if can? :edit_idea, @idea
+      @idea.update(get_idea_params)
       redirect_to idea_path(@idea), notice: "You have updated"
     else
       redirect_to :back
@@ -71,7 +72,7 @@ class IdeasController < ApplicationController
 
   private
   def get_idea_params
-    params.require(:idea).permit([:body, :title])
+    params.require(:idea).permit([:body, :title, :image])
 
   end
 

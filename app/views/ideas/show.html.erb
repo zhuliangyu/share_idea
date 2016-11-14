@@ -4,6 +4,8 @@
   <h1>Title:<%= @idea.title %></h1>
   <h1>Body:<%= @idea.body %></h1>
   <h1>User:<%= @idea.user.first_name %></h1>
+  <h1>Image:<%= image_tag @idea.image.url %></h1>
+
   <%= link_to "Edit", edit_idea_path(@idea) %>
   <%= link_to "Delete", idea_path(@idea), method: :delete, data: {confirm: "are you sure?"} %>
 

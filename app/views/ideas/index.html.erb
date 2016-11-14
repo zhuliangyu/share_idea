@@ -4,6 +4,7 @@
       <h1>Title:<%= idea.title %></h1>
       <h2>Body:<%= idea.body %></h2>
       <h3>User:<%= idea.user.first_name %></h3>
+      <h3>Image:<%= image_tag idea.image.url(:medium) %></h3>
       <%= link_to "show", idea_path(idea) %>
       <br>
 
