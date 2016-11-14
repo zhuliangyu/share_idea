@@ -11,6 +11,8 @@ class LikesController < ApplicationController
     @like.idea=@idea
 
     if @like.save
+      IdeaLikeMailer.idea_like_email(@idea.user).deliver_later
+
       redirect_to ideas_path, notice: "You like a idea"
     else
       redirect_to ideas_path, alert: error_message(@like)

@@ -66,6 +66,23 @@ Users can only delete their own comments
 
 
 **********
-481
+rails g migration AddPaperclipToIdeas
+
+Add a mailer to send an email to the idea creator when someone likes their ideas and make it happen in the background with DelayedJob - 15%
+
+rails g mailer idea_like_mailer
+
+http://localhost:3000/rails/mailers/idea_like_mailer/idea_like_mailer_preview
+
+http://localhost:3000/rails/mailers/idea_like_mailer
+
+
+IdeaLikeMailer.idea_like_email(User.first).deliver
+IdeaLikeMailer.idea_like_email(user).deliver_later
+
+
+Like.where("created_at >= ?", Time.zone.now.beginning_of_day)
+
+
 
 
