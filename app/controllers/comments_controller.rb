@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
 
   def create
     # render plain:"asd"
+    # byebug
 
     @comment=Comment.new(get_comment_params)
 
